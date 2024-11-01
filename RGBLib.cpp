@@ -16,6 +16,15 @@ void RGB::acender(String cor) {
             analogWrite(_pinG, colors[i].green);
             analogWrite(_pinB, colors[i].blue);
             break;
+        } else {
+            digitalWrite(_pinR, 1);
+            digitalWrite(_pinG, 0);
+            digitalWrite(_pinB, 0);
+            delay(1000);
+            digitalWrite(_pinR, 0);
+            digitalWrite(_pinG, 0);
+            digitalWrite(_pinB, 0);
+            delay(1000);
         }
     }
     
