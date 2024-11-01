@@ -1,0 +1,4 @@
+RGB KEYWORD1
+acender KEYWORD2
+rave KEYWORD2
+transicao KEYWORD2
