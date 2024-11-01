@@ -79,16 +79,16 @@ void transicao(String cor1, String cor2){
     int difAzul = colors[index2].blue - colors[index1].blue;
 
     for(int i=0; i<100; i++){
-        analogWrite(_pinR, colors[index1].red + vermelhoDif*i/100);
-        analogWrite(_pinG, colors[index1].green + vermelhoDif*i/100);
-        analogWrite(_pinB, colors[index1].blue + vermelhoDif*i/100);
+        analogWrite(_pinR, colors[index1].red + difVermelho*i/100);
+        analogWrite(_pinG, colors[index1].green + difVerde*i/100);
+        analogWrite(_pinB, colors[index1].blue + difAzul*i/100);
 
         delay(20);
     }
     for(int i=100; i>0; i--){
-        analogWrite(_pinR, colors[index2].red + vermelhoDif*i/100);
-        analogWrite(_pinG, colors[index2].green + vermelhoDif*i/100);
-        analogWrite(_pinB, colors[index2].blue + vermelhoDif*i/100);
+        analogWrite(_pinR, colors[index2].red + difVermelho*i/100);
+        analogWrite(_pinG, colors[index2].green + difVerde*i/100);
+        analogWrite(_pinB, colors[index2].blue + difAzul*i/100);
 
         delay(20);
     }
