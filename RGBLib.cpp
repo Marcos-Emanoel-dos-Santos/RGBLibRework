@@ -73,30 +73,31 @@ void RGB::rave(int ms){
     delay(ms);
    }
 }
-void RGB::transicao(String cor1, String cor2){
-     int index1 = -1, index2 = -1;
+void RGB::transicao(String cor1, String cor2) {
+    int index1 = -1, index2 = -1;
 
     // ENCONTRA AS CORES NO ARRAY
     for (int i = 0; i < 9; i++) {
-        if (colors[i].name == cor1){index1 = i};
-        if (colors[i].name == cor2){index2 = i};
+        if (colors[i].name == cor1) index1 = i;
+        if (colors[i].name == cor2) index2 = i;
     }
+
+    // Verifica se as cores foram encontradas
+    if (index1 == -1 || index2 == -1) {
+        Serial.println("Erro: Cores não encontradas!");
+        return;
+    }
+
     // ENCONTRA A DIFERENÇA DE CADA COMPONENTE DAS CORES
     int difVermelho = colors[index2].red - colors[index1].red;
     int difVerde = colors[index2].green - colors[index1].green;
     int difAzul = colors[index2].blue - colors[index1].blue;
 
-    for(int i=0; i<100; i++){
-        analogWrite(_pinR, colors[index1].red + difVermelho*i/100);
-        analogWrite(_pinG, colors[index1].green + difVerde*i/100);
-        analogWrite(_pinB, colors[index1].blue + difAzul*i/100);
-
-        delay(20);
-    }
-    for(int i=100; i>0; i--){
-        analogWrite(_pinR, colors[index2].red + difVermelho*i/100);
-        analogWrite(_pinG, colors[index2].green + difVerde*i/100);
-        analogWrite(_pinB, colors[index2].blue + difAzul*i/100);
+    // Transição de cor1 para cor2
+    for (int i = 0; i <= 100; i++) {
+        analogWrite(_pinR, colors[index1].red + difVermelho * i / 100);
+        analogWrite(_pinG, colors[index1].green + difVerde * i / 100);
+        analogWrite(_pinB, colors[index1].blue + difAzul * i / 100);
 
         delay(20);
     }
