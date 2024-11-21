@@ -73,7 +73,7 @@ void RGB::rave(int ms){
     delay(ms);
    }
 }
-void transicao(String cor1, String cor2){
+void RGB::transicao(String cor1, String cor2){
      int index1 = -1, index2 = -1;
 
     // ENCONTRA AS CORES NO ARRAY
