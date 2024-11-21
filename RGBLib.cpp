@@ -101,4 +101,11 @@ void RGB::transicao(String cor1, String cor2) {
 
         delay(20);
     }
+    // TRANSICAO DE COR2 PARA COR1
+      for(int i=100; i>0; i--){
+        analogWrite(_pinR, colors[index2].red + difVermelho*i/100);
+        analogWrite(_pinG, colors[index2].green + difVerde*i/100);
+        analogWrite(_pinB, colors[index2].blue + difAzul*i/100);
+
+        delay(20);
 }
