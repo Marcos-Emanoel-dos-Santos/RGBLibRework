@@ -24,7 +24,6 @@ void RGB::acender(String cor) {
             digitalWrite(_pinR, 0);
             digitalWrite(_pinG, 0);
             digitalWrite(_pinB, 0);
-            delay(1000);
         }
     }
     
