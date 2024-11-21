@@ -108,4 +108,5 @@ void RGB::transicao(String cor1, String cor2) {
         analogWrite(_pinB, colors[index2].blue + difAzul*i/100);
 
         delay(20);
+    }
 }
