@@ -10,20 +10,24 @@ RGB::RGB(int pinR, int pinG, int pinB) {
 }
 
 void RGB::acender(String cor) {
+    bool corEncontrada = false;
     for(int i=0; i<9; i++){
-        if(colors[i].name == cor){
+        if(cor.equals(colors[i].name)){
             analogWrite(_pinR, colors[i].red);
             analogWrite(_pinG, colors[i].green);
             analogWrite(_pinB, colors[i].blue);
-        } else {
-            digitalWrite(_pinR, 1);
-            digitalWrite(_pinG, 0);
-            digitalWrite(_pinB, 0);
-            delay(1000);
-            digitalWrite(_pinR, 0);
-            digitalWrite(_pinG, 0);
-            digitalWrite(_pinB, 0);
+            corEncontrada = true;
+            break;
         }
+    }
+    if(!corEncontrada){
+        digitalWrite(_pinR, 1);
+        digitalWrite(_pinG, 0);
+        digitalWrite(_pinB, 0);
+        delay(1000);
+        digitalWrite(_pinR, 0);
+        digitalWrite(_pinG, 0);
+        digitalWrite(_pinB, 0);
     }
     
 }
@@ -32,10 +36,11 @@ void RGB::acender(int vermelho, int verde, int azul) {
     analogWrite(_pinG, verde);
     analogWrite(_pinB, azul);
 }
+
 void RGB::rave(int ms){
    for(int i=0; i<1785; i++){
     if(i > 1530){ // VERMELHO -> 255, 0, 0
-        analogWrite(_pinR, i);
+        analogWrite(_pinR, 255);
         analogWrite(_pinG, 0);
         analogWrite(_pinB, 1785-i);
     }
@@ -77,8 +82,8 @@ void RGB::transicao(String cor1, String cor2) {
 
     // ENCONTRA AS CORES NO ARRAY
     for (int i = 0; i < 9; i++) {
-        if (colors[i].name == cor1) index1 = i;
-        if (colors[i].name == cor2) index2 = i;
+        if (cor1.equals(colors[i].name)) index1 = i;
+        if (cor2.equals(colors[i].name)) index2 = i;
     }
 
     // Verifica se as cores foram encontradas
@@ -102,9 +107,9 @@ void RGB::transicao(String cor1, String cor2) {
     }
     // TRANSICAO DE COR2 PARA COR1
       for(int i=100; i>0; i--){
-        analogWrite(_pinR, colors[index2].red + difVermelho*i/100);
-        analogWrite(_pinG, colors[index2].green + difVerde*i/100);
-        analogWrite(_pinB, colors[index2].blue + difAzul*i/100);
+        analogWrite(_pinR, colors[index1].red + difVermelho*i/100);
+        analogWrite(_pinG, colors[index1].green + difVerde*i/100);
+        analogWrite(_pinB, colors[index1].blue + difAzul*i/100);
 
         delay(20);
     }

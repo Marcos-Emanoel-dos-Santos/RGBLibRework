@@ -4,7 +4,7 @@
 #include "Arduino.h"
 
 struct Color { // Estrutura para armazenar nome e valores RGB
-  String name;
+  const char* name;
   int red;
   int green;
   int blue;
@@ -20,7 +20,7 @@ class RGB {
 
     private:
     int _pinR, _pinG, _pinB;
-    const Color colors[9] = {
+    static constexpr Color colors[9] = {
       {"Vermelho", 255, 0, 0},
       {"Laranja", 255, 136, 0},
       {"Amarelo", 255, 255, 0},
@@ -28,7 +28,7 @@ class RGB {
       {"Ciano", 0, 255, 255},
       {"Azul", 0, 0, 255},
       {"Roxo", 170, 0, 255},
-      {"Rosa", 255, 255, 150},
+      {"Rosa", 255, 30, 150},
       {"Branco", 255, 255, 255}
     };
 };
